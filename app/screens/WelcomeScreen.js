@@ -4,7 +4,7 @@ import AppButton from '../components/AppButton';
 
 function WelcomeScreen(props) {
     return (
-      <ImageBackground blurRadius={10}
+      <ImageBackground blurRadius={5}
         style={styles.background}
         source={require("../assets/background.jpg")}
       >
@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonsContainer: {
-    padding: 20
+    padding: 20,
+    width: '100%',
   },
   tagline: {
     fontSize: 25,
