@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import React from "react";
 import colors from "../config/colors";
 import AppText from "./AppText";
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: colors.white,
     marginBottom: 20,
-    overflow: 'hidden'
+    overflow: "hidden",
   },
   image: {
     width: "100%",
