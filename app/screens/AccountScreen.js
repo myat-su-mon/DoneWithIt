@@ -1,16 +1,17 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import Screen from "../components/Screen";
-import ListItem from "../components/ListItem";
+import { StyleSheet, View, FlatList } from "react-native";
+
+import { ListItem, ListItemSeparator } from "../components/lists";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
-import ListItemSeparator from "../components/ListItemSeparator";
+import routes from "../navigation/routes";
+import Screen from "../components/Screen";
 
 const menuItems = [
   {
     title: "My Listings",
     icon: {
-      name: "format-list-bullet",
+      name: "format-list-bulleted",
       backgroundColor: colors.primary,
     },
   },
@@ -20,16 +21,17 @@ const menuItems = [
       name: "email",
       backgroundColor: colors.secondary,
     },
+    targetScreen: routes.MESSAGES,
   },
 ];
 
-const AccountScreen = () => {
+function AccountScreen({ navigation }) {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
-          title="Mosh"
-          subTitle="programming with mosh"
+          title="Mosh Hamedani"
+          subTitle="programmingwithmosh@gmail.com"
           image={require("../assets/mosh.jpg")}
         />
       </View>
@@ -47,6 +49,7 @@ const AccountScreen = () => {
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
+              onPress={() => navigation.navigate(item.targetScreen)}
             />
           )}
         />
@@ -57,9 +60,7 @@ const AccountScreen = () => {
       />
     </Screen>
   );
-};
-
-export default AccountScreen;
+}
 
 const styles = StyleSheet.create({
   screen: {
@@ -69,3 +70,5 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
 });
+
+export default AccountScreen;

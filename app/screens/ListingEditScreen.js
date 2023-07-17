@@ -1,20 +1,24 @@
-import Screen from "../Screen";
+import React from "react";
+import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+
 import {
-  AppForm,
-  AppFormField as FormField,
-  AppFormPicker as Picker,
+  Form,
+  FormField,
+  FormPicker as Picker,
   SubmitButton,
-} from "../forms";
-import CategoryPickerItem from "../CategoryPickerItem";
-import FormImagePicker from "../forms/FormImagePicker";
+} from "../components/forms";
+import CategoryPickerItem from "../components/CategoryPickerItem";
+import Screen from "../components/Screen";
+import FormImagePicker from "../components/forms/FormImagePicker";
+import useLocation from "../hooks/useLocation";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
   price: Yup.number().required().min(1).max(10000).label("Price"),
   description: Yup.string().label("Description"),
   category: Yup.object().required().nullable().label("Category"),
-  images: Yup.array().min(1, "Please select at least one image"),
+  images: Yup.array().min(1, "Please select at least one image."),
 });
 
 const categories = [
@@ -27,7 +31,7 @@ const categories = [
   {
     backgroundColor: "#fd9644",
     icon: "car",
-    label: "cars",
+    label: "Cars",
     value: 2,
   },
   {
@@ -74,14 +78,15 @@ const categories = [
   },
 ];
 
-const ListingEditScreen = () => {
+function ListingEditScreen() {
+  const location = useLocation();
+
   return (
     <Screen style={styles.container}>
-      <Image style={styles.logo} source={require("../assets/logo-red.png")} />
-      <AppForm
+      <Form
         initialValues={{
           title: "",
-          price: 0,
+          price: "",
           description: "",
           category: null,
           images: [],
@@ -111,11 +116,17 @@ const ListingEditScreen = () => {
           multiline
           name="description"
           numberOfLines={3}
+          placeholder="Description"
         />
         <SubmitButton title="Post" />
-      </AppForm>
+      </Form>
     </Screen>
   );
-};
+}
 
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+  },
+});
 export default ListingEditScreen;

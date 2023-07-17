@@ -1,20 +1,22 @@
-import { StyleSheet } from "react-native";
-import ErrorMessage from "./ErrorMessage";
+import React from "react";
 import { useFormikContext } from "formik";
-import AppPicker from "../AppPicker";
 
-const AppFormPicker = ({
+import Picker from "../Picker";
+import ErrorMessage from "./ErrorMessage";
+
+function AppFormPicker({
   items,
   name,
   numberOfColumns,
   PickerItemComponent,
   placeholder,
   width,
-}) => {
-  const { setFieldValue, errors, touched, values } = useFormikContext();
+}) {
+  const { errors, setFieldValue, touched, values } = useFormikContext();
+
   return (
     <>
-      <AppPicker
+      <Picker
         items={items}
         numberOfColumns={numberOfColumns}
         onSelectItem={(item) => setFieldValue(name, item)}
@@ -26,8 +28,6 @@ const AppFormPicker = ({
       <ErrorMessage error={errors[name]} visible={touched[name]} />
     </>
   );
-};
+}
 
 export default AppFormPicker;
-
-const styles = StyleSheet.create({});

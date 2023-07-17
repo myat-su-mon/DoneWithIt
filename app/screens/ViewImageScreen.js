@@ -1,7 +1,8 @@
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
-import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+import colors from "../config/colors";
 
 function ViewImageScreen(props) {
   return (
@@ -31,14 +32,14 @@ const styles = StyleSheet.create({
     top: 40,
     left: 30,
   },
+  container: {
+    backgroundColor: colors.black,
+    flex: 1,
+  },
   deleteIcon: {
     position: "absolute",
     top: 40,
     right: 30,
-  },
-  container: {
-    backgroundColor: colors.black,
-    flex: 1,
   },
   image: {
     width: "100%",
