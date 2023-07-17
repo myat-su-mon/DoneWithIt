@@ -1,7 +1,7 @@
-import LoginScreen from "./app/screens/LoginScreen";
+import ListingEditScreen from "./app/components/lists/ListingEditScreen";
 
 const App = () => {
-  return <LoginScreen />;
+  return <ListingEditScreen />;
 };
 
 export default App;
