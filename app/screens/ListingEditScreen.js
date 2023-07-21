@@ -83,6 +83,7 @@ function ListingEditScreen() {
   const location = useLocation();
   const [uploadVisible, setUploadVisible] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [visible, setVisible] = useState(false);
 
   const handleSubmit = async (listing, { resetForm }) => {
     setProgress(0);
