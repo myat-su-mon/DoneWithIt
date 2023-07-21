@@ -2,8 +2,13 @@ import React from "react";
 import Screen from "./app/components/Screen";
 import { Button } from "react-native";
 import * as Notifications from "expo-notifications";
+import logger from "./app/utility/logger";
+
+logger.start();
 
 export default function App() {
+  logger.log(new Error("Error in App"));
+
   const showNotification = async () => {
     try {
       await Notifications.scheduleNotificationAsync({
